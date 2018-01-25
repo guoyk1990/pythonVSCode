@@ -57,9 +57,9 @@ gulp.task('hygiene', () => run({ mode: 'all', skipFormatCheck: true, skipIndenta
 
 gulp.task('compile', () => run({ mode: 'compile', skipFormatCheck: true, skipIndentationCheck: true, skipLinter: true }));
 
-gulp.task('watch', ['hygiene-modified', 'hygiene-watch']);
+gulp.task('watch', ['hygiene-all', 'hygiene-watch'], () => { });
 
-gulp.task('hygiene-watch', () => gulp.watch(all, debounce(() => run({ mode: 'changes' }), 1000)));
+gulp.task('hygiene-watch', () => gulp.watch(all, debounce(() => run({ mode: 'all' }), 1000)));
 
 gulp.task('hygiene-all', () => run({ mode: 'all' }));
 

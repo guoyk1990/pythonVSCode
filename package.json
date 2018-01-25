@@ -1554,15 +1554,12 @@
 		]
 	},
 	"scripts": {
-		"vscode:prepublish": "tsc -p ./",
-		"compile": "tsc -watch -p ./",
+		"vscode:prepublish": "node gulpfile.js && tsc -p ./",
 		"postinstall": "node ./node_modules/vscode/bin/install",
 		"test": "node ./out/test/standardTest.js && node ./out/test/multiRootTest.js",
 		"testSingleWorkspace": "node ./out/test/standardTest.js",
 		"testMultiWorkspace": "node ./out/test/multiRootTest.js",
 		"precommit": "node gulpfile.js",
-		"lint-staged": "node gulpfile.js",
-		"lint": "tslint src/**/*.ts -t verbose",
 		"clean": "gulp clean",
 		"cover:enable": "gulp cover:enable"
 	},
@@ -1648,5 +1645,10 @@
 		"typescript-formatter": "^6.0.0",
 		"vscode": "^1.1.5",
 		"vscode-debugadapter-testsupport": "^1.25.0"
+	},
+	"__metadata": {
+		"id": "f1f59ae4-9318-4f3c-a9b5-81b2eaa5f8a5",
+		"publisherDisplayName": "Microsoft",
+		"publisherId": "998b010b-e2af-44a5-a6cd-0b5fd3b9b6f8"
 	}
 }

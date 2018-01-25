@@ -350,5 +350,5 @@ exports.hygiene = hygiene;
 
 // this allows us to run hygiene as a git pre-commit hook.
 if (require.main === module) {
-    run({ exitOnError: true, mode: 'staged' });
+    run({ exitOnError: true, mode: 'all' });
 }

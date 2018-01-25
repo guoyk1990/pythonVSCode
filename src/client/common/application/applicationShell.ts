@@ -11,12 +11,12 @@ import { IApplicationShell } from './types';
 
 @injectable()
 export class ApplicationShell implements IApplicationShell {
-    public showInformationMessage(message: string, ...items: string[]): Thenable<string> ;
-    public showInformationMessage(message: string, options: vscode.MessageOptions, ...items: string[]): Thenable<string> ;
-    public showInformationMessage<T extends vscode.MessageItem>(message: string, ...items: T[]): Thenable<T> ;
-    public showInformationMessage<T extends vscode.MessageItem>(message: string, options: vscode.MessageOptions, ...items: T[]): Thenable<T> ;
+    public showInformationMessage(message: string, ...items: string[]): Thenable<string>;
+    public showInformationMessage(message: string, options: vscode.MessageOptions, ...items: string[]): Thenable<string>;
+    public showInformationMessage<T extends vscode.MessageItem>(message: string, ...items: T[]): Thenable<T>;
+    public showInformationMessage<T extends vscode.MessageItem>(message: string, options: vscode.MessageOptions, ...items: T[]): Thenable<T>;
     // tslint:disable-next-line:no-any
-    public showInformationMessage(message: string, options?: any, ...items: any[]): Thenable<any>  {
+    public showInformationMessage(message: string, options?: any, ...items: any[]): Thenable<any> {
         return vscode.window.showInformationMessage(message, options, ...items);
     }
 
@@ -45,13 +45,13 @@ export class ApplicationShell implements IApplicationShell {
         return vscode.window.showQuickPick(items, options, token);
     }
 
-    public showOpenDialog(options: vscode.OpenDialogOptions): Thenable<vscode.Uri[]> {
+    public showOpenDialog(options: vscode.OpenDialogOptions): Thenable<vscode.Uri[] | undefined> {
         return vscode.window.showOpenDialog(options);
     }
-    public showSaveDialog(options: vscode.SaveDialogOptions): Thenable<vscode.Uri> {
+    public showSaveDialog(options: vscode.SaveDialogOptions): Thenable<vscode.Uri | undefined> {
         return vscode.window.showSaveDialog(options);
     }
-    public showInputBox(options?: vscode.InputBoxOptions, token?: vscode.CancellationToken): Thenable<string> {
+    public showInputBox(options?: vscode.InputBoxOptions, token?: vscode.CancellationToken): Thenable<string | undefined> {
         return vscode.window.showInputBox(options, token);
     }
     public openUrl(url: string): void {

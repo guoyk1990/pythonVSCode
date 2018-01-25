@@ -1597,6 +1597,7 @@
 		"@types/chai": "4.0.6",
 		"@types/chai-as-promised": "^7.1.0",
 		"@types/del": "^3.0.0",
+		"@types/diff-match-patch": "^1.0.32",
 		"@types/event-stream": "^3.3.33",
 		"@types/fs-extra": "^4.0.2",
 		"@types/get-port": "^3.2.0",

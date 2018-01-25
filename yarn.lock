@@ -28,6 +28,10 @@
   dependencies:
     "@types/glob" "*"
 
+"@types/diff-match-patch@^1.0.32":
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/@types/diff-match-patch/-/diff-match-patch-1.0.32.tgz#d9c3b8c914aa8229485351db4865328337a3d09f"
+
 "@types/event-stream@^3.3.33":
   version "3.3.33"
   resolved "https://registry.yarnpkg.com/@types/event-stream/-/event-stream-3.3.33.tgz#ca155f6e805b606175322c03e6d75bc3b940cb95"

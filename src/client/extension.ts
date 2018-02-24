@@ -8,8 +8,8 @@ if ((Reflect as any).metadata === undefined) {
 import { Container } from 'inversify';
 import * as vscode from 'vscode';
 import { Disposable, Memento, OutputChannel, window } from 'vscode';
-import { PythonSettings } from './common/configSettings';
 import * as settings from './common/configSettings';
+import { PythonSettings } from './common/configSettings';
 import { STANDARD_OUTPUT_CHANNEL } from './common/constants';
 import { FeatureDeprecationManager } from './common/featureDeprecationManager';
 import { createDeferred } from './common/helpers';
@@ -36,6 +36,7 @@ import { registerTypes as lintersRegisterTypes } from './linters/serviceRegistry
 import { ILintingEngine } from './linters/types';
 import { PythonCompletionItemProvider } from './providers/completionProvider';
 import { PythonDefinitionProvider } from './providers/definitionProvider';
+import { DocStringFoldingProvider } from './providers/docStringFoldingProvider';
 import { PythonFormattingEditProvider } from './providers/formatProvider';
 import { PythonHoverProvider } from './providers/hoverProvider';
 import { LinterProvider } from './providers/linterProvider';
@@ -143,7 +144,7 @@ export async function activate(context: vscode.ExtensionContext) {
             }
         ]
     });
-
+debugger;
     context.subscriptions.push(jediFactory);
     context.subscriptions.push(vscode.languages.registerRenameProvider(PYTHON, new PythonRenameProvider(serviceContainer)));
     const definitionProvider = new PythonDefinitionProvider(jediFactory);
@@ -152,6 +153,7 @@ export async function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(vscode.languages.registerReferenceProvider(PYTHON, new PythonReferenceProvider(jediFactory)));
     context.subscriptions.push(vscode.languages.registerCompletionItemProvider(PYTHON, new PythonCompletionItemProvider(jediFactory, serviceContainer), '.'));
     context.subscriptions.push(vscode.languages.registerCodeLensProvider(PYTHON, serviceContainer.get<IShebangCodeLensProvider>(IShebangCodeLensProvider)));
+    context.subscriptions.push(vscode.languages.registerFoldingProvider(PYTHON, new DocStringFoldingProvider()));
 
     const symbolProvider = new PythonSymbolProvider(jediFactory);
     context.subscriptions.push(vscode.languages.registerDocumentSymbolProvider(PYTHON, symbolProvider));

@@ -118,3 +118,5 @@ const globalPythonPathSetting = workspace.getConfiguration('python').inspect('py
 export const clearPythonPathInWorkspaceFolder = async (resource: string | Uri) => retryAsync(setPythonPathInWorkspace)(resource, ConfigurationTarget.WorkspaceFolder);
 export const setPythonPathInWorkspaceRoot = async (pythonPath: string) => retryAsync(setPythonPathInWorkspace)(undefined, ConfigurationTarget.Workspace, pythonPath);
 export const resetGlobalPythonPathSetting = async () => retryAsync(restoreGlobalPythonPathSetting)();
+
+export const openTextDocument = (file: string) => workspace.openTextDocument(Uri.file(file));

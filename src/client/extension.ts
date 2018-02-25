@@ -144,7 +144,7 @@ export async function activate(context: vscode.ExtensionContext) {
             }
         ]
     });
-debugger;
+
     context.subscriptions.push(jediFactory);
     context.subscriptions.push(vscode.languages.registerRenameProvider(PYTHON, new PythonRenameProvider(serviceContainer)));
     const definitionProvider = new PythonDefinitionProvider(jediFactory);

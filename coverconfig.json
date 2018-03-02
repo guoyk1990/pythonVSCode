@@ -16,6 +16,6 @@
     "verbose": false,
     "reporter": "mocha-junit-reporter",
     "reporterOptions": {
-        "mochaFile": "../../report.xml"
+        "mochaFile": "../../TEST-report.xml"
     }
 }

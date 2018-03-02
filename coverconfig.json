@@ -13,5 +13,9 @@
         "lcov",
         "lcovonly"
     ],
-    "verbose": false
+    "verbose": false,
+    "reporter": "mocha-junit-reporter",
+    "reporterOptions": {
+        "mochaFile": "../../report.xml"
+    }
 }

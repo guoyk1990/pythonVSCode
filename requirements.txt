@@ -7,6 +7,4 @@ flake8==2.6.0
 pydocstyle==1.0.0
 nose
 pytest
-fabric
-numba
 rope

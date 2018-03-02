@@ -3,6 +3,7 @@ if ((Reflect as any).metadata === undefined) {
     // tslint:disable-next-line:no-require-imports no-var-requires
     require('reflect-metadata');
 }
+import * as path from 'path';
 import { MochaSetupOptions } from 'vscode/lib/testrunner';
 import { IS_CI_SERVER, IS_CI_SERVER_TEST_DEBUGGER, IS_MULTI_ROOT_TEST } from './constants';
 import * as testRunner from './testRunner';
@@ -18,12 +19,20 @@ const grep = IS_CI_SERVER && IS_CI_SERVER_TEST_DEBUGGER ? 'Debug' : undefined;
 // You can directly control Mocha options by uncommenting the following lines.
 // See https://github.com/mochajs/mocha/wiki/Using-mocha-programmatically#set-options for more info.
 // Hack, as retries is not supported as setting in tsd.
-const options: MochaSetupOptions & { retries: number } = {
+// tslint:disable-next-line:no-any
+const options: MochaSetupOptions & { retries: number } & { [key: string]: any } = {
     ui: 'tdd',
     useColors: true,
     timeout: 25000,
     retries: 3,
-    grep
+    grep,
+    reporter: 'mocha-multi-reporters',
+    reporterOptions: {
+        reporterEnabled: 'spec, mocha-junit-reporter',
+        mochaJunitReporterReporterOptions: {
+            mochaFile: path.join(__dirname, '..', '..', 'TEST-report.xml')
+        }
+    }
 };
 testRunner.configure(options, { coverageConfig: '../coverconfig.json' });
 module.exports = testRunner;
